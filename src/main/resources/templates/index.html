@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dagbok</title>
+  </head>
+  <body>
+    <h1>Dagbok</h1>
+    <h3>Lägg till nytt inlägg</h3>
+    <div>
+      <form method="post" th:action="@{/new-item}">
+        <h3>Titel</h3>
+        <input type="text" name="title" required />
+        <h3>innehåll</h3>
+        <input type="text" name="text" required />
+        <h3>Datum</h3>
+        <input type="date" name="date" required />
+        <button>Spara</button>
+      </form>
+    </div>
+    <ul>
+      <li th:each=" e : ${entries}">
+        <h4 th:text="${e.title}"></h4>
+        <span th:text="${e.text}"></span>
+        <br />
+        <span th:text="${e.date}"></span>
+        <a th:href="@{/delete(id=${e.id})}">[X]</a>
+        <a th:href="@{/edit(id=${e.id})}">[Redigera Inlägg]</a>
+      </li>
+    </ul>
+    <a href="/search">Sök på inlägg</a>
+  </body>
+</html>

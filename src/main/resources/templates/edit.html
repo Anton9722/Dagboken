@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redigera Inlägg</title>
+  </head>
+  <body>
+    <h1>Redigera dagboks inlägg</h1>
+    <form method="post" th:action="@{/update(id=${entry.id})}">
+      <h3>Ändra Titel</h3>
+      <input type="text" name="title" th:value="${entry.title}" required />
+      <h3>Ändra Innehåll</h3>
+      <input type="text" name="text" th:value="${entry.text}" required />
+      <h3>Ändra Datum</h3>
+      <input type="date" name="date" th:value="${entry.date}" required />
+      <br />
+      <br />
+      <button>Spara Redigering</button>
+    </form>
+    <br />
+    <a href="/">Gå tillbaka utan att redigera</a>
+  </body>
+</html>
